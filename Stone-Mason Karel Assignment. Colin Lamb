@@ -1,0 +1,53 @@
+import stanford.karel.*;
+
+public class StoneMasonKarel extends SuperKarel {
+
+	// You fill in this part
+public void run () {
+	while (frontIsClear()) {
+	fixOnePillar();
+	moveBackDown();
+	moveToNextPillar();
+	}
+	fixOnePillar();
+	moveBackDown();
+}
+
+/*In this method, Karel fixes a single pillar. He starts by testing
+ * if the front is clear, then places a beeper wherever one is missing.
+ */
+private void fixOnePillar () {
+	turnLeft();
+	while (frontIsClear()) {
+		if (noBeepersPresent())
+		{
+			putBeeper();
+		}
+		move();
+	}
+	
+	if (noBeepersPresent()) {
+		putBeeper();
+	}
+}
+/*In this method, Karel simply moves back down the column which he
+ * just fixed by simply turning around and using a "while" loop to
+ * determine if his path is un-obstructed
+ */
+private void moveBackDown () {
+	turnAround();
+	while (frontIsClear()) {
+		move();
+	}
+}
+/*In this method, karel turns left and uses a "for" loop to
+ * 	execute the "move" command four times.
+ */
+private void moveToNextPillar() {
+		turnLeft();
+	for (int i = 0; i <4; i++) {
+		move();
+			}
+		}
+	}
+	
